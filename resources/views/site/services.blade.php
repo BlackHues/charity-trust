@@ -14,7 +14,7 @@
         <section id="education" class="scroll-mt-24">
             <h2 class="font-serif text-2xl font-semibold text-trust-900">Education</h2>
             <p class="mt-4 leading-relaxed text-stone-700">
-                Mahavidhya Charitable Trust focuses on the empowerment of society by providing quality education to the underprivileged free of cost. We promote formal and non-formal education, health education, consumer education, environmental education, technical legal education, and help poor students prepare for competitive examinations. By getting proper education and appropriate skills development they can build a good career, become breadwinners for their families, and strengthen the pillars of society. We produce, collect, preserve, and share educational and development resource materials for development education programmes in India, especially for downtrodden and poor communities, women, and weaker sectors.
+                Maha Vidhya Charitable Trust focuses on the empowerment of society by providing quality education to the underprivileged free of cost. We promote formal and non-formal education, health education, consumer education, environmental education, technical legal education, and help poor students prepare for competitive examinations. By getting proper education and appropriate skills development they can build a good career, become breadwinners for their families, and strengthen the pillars of society. We produce, collect, preserve, and share educational and development resource materials for development education programmes in India, especially for downtrodden and poor communities, women, and weaker sectors.
             </p>
         </section>
 
@@ -42,7 +42,7 @@
         <section id="environment" class="scroll-mt-24">
             <h2 class="font-serif text-2xl font-semibold text-trust-900">Environment</h2>
             <p class="mt-4 leading-relaxed text-stone-700">
-                Mahavidhya Charitable Trust is actively engaged in protecting against environmental hazards through awareness campaigns and group initiatives. We promote organic farming and rainwater conservation with water management clubs, biodiversity conservation of medicinal plants, animals, and birds, and planting tree species to help address global warming and improve the environment.
+                Maha Vidhya Charitable Trust is actively engaged in protecting against environmental hazards through awareness campaigns and group initiatives. We promote organic farming and rainwater conservation with water management clubs, biodiversity conservation of medicinal plants, animals, and birds, and planting tree species to help address global warming and improve the environment.
             </p>
         </section>
     </div>

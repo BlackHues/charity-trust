@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Mahavidhya Charitable Trust — education, healthcare, and social welfare for underprivileged communities in Tamil Nadu.">
+    <meta name="description" content="Maha Vidhya Charitable Trust — education, healthcare, and social welfare for underprivileged communities in Tamil Nadu.">
     <title>@yield('title', config('app.name'))</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
@@ -12,11 +12,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-warm-100 text-stone-800 antialiased">
-    @php
-        $isHome = request()->routeIs('home');
-    @endphp
-    <header id="site-header" class="site-header sticky top-0 z-50 border-b border-warm-200/80 bg-warm-100/95 backdrop-blur-sm @if ($isHome) site-header--home @endif">
-        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 md:flex-nowrap">
+    <header id="site-header" class="site-header sticky top-0 z-50 border-b border-warm-200/80 bg-warm-100/95 backdrop-blur-sm">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-0 md:flex-nowrap md:gap-x-8">
             <a href="{{ route('home') }}" class="flex shrink-0 items-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-trust-700 focus-visible:ring-offset-2">
                 <img src="{{ asset('images/logo.png') }}"
                      width="260"
@@ -26,10 +23,10 @@
                 <span class="sr-only">{{ config('app.name') }}</span>
             </a>
             <input type="checkbox" id="nav-toggle" class="peer sr-only" aria-hidden="true">
-            <label for="nav-toggle" class="inline-flex cursor-pointer items-center justify-center rounded-lg border border-trust-700/20 px-3 py-2 text-sm font-medium text-trust-900 md:hidden">
+            <label for="nav-toggle" class="inline-flex cursor-pointer items-center justify-center rounded-lg border border-trust-700/25 px-4 py-2 text-sm font-semibold tracking-wide text-trust-900 md:hidden">
                 Menu
             </label>
-            <nav class="hidden w-full basis-full flex-col gap-1 peer-checked:flex md:flex md:w-auto md:basis-auto md:flex-row md:items-center md:gap-1 md:peer-checked:flex">
+            <nav class="hidden w-full basis-full flex-col gap-2 pt-3 peer-checked:flex md:flex md:w-auto md:basis-auto md:flex-row md:items-center md:gap-3 md:pt-0 md:peer-checked:flex">
                 @php
                     $links = [
                         ['route' => 'home', 'label' => 'Home'],
@@ -44,7 +41,7 @@
                 @endphp
                 @foreach ($links as $link)
                     <a href="{{ route($link['route']) }}"
-                       class="rounded-lg px-3 py-2 text-sm font-medium transition hover:bg-trust-900/5 {{ request()->routeIs($link['route']) ? 'bg-trust-900/10 text-trust-900' : 'text-stone-700' }}">
+                       class="rounded-lg px-4 py-3 text-[0.9375rem] font-medium leading-snug transition-colors md:px-3 md:py-2 {{ request()->routeIs($link['route']) ? 'bg-trust-900/[0.08] text-trust-900' : 'text-stone-600 hover:bg-trust-900/[0.05] hover:text-trust-900' }}">
                         {{ $link['label'] }}
                     </a>
                 @endforeach

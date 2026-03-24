@@ -16,26 +16,14 @@
     --color-warm-200: #f0e8dc;
 }
 
-/* Navbar: home starts larger, matches other pages after .site-header--compact (JS @ 3s). */
 @layer components {
     .site-header {
-        transition: padding-block 0.5s ease;
         padding-block: 0.5rem;
     }
 
     @media (min-width: 768px) {
         .site-header {
-            padding-block: 0.75rem;
-        }
-    }
-
-    .site-header--home:not(.site-header--compact) {
-        padding-block: 0.875rem;
-    }
-
-    @media (min-width: 768px) {
-        .site-header--home:not(.site-header--compact) {
-            padding-block: 1.125rem;
+            padding-block: 0.625rem;
         }
     }
 
@@ -43,59 +31,37 @@
         width: auto;
         object-fit: contain;
         object-position: left center;
-        transition:
-            height 0.5s ease,
-            max-width 0.5s ease;
-        height: 2.5rem;
-        max-width: min(100%, 170px);
+        height: 2.625rem;
+        max-width: min(100%, 180px);
     }
 
     @media (min-width: 768px) {
         .site-header-logo {
-            height: 2.75rem;
-            max-width: 190px;
+            height: 2.875rem;
+            max-width: 200px;
         }
     }
 
-    .site-header--home:not(.site-header--compact) .site-header-logo {
-        height: 3.5rem;
-        max-width: min(100%, 240px);
-    }
-
-    @media (min-width: 768px) {
-        .site-header--home:not(.site-header--compact) .site-header-logo {
-            height: 4.25rem;
-            max-width: 260px;
-        }
-    }
-
+    /* Hero banner logo: scales with viewport; larger on md+ for more visual height */
     .home-hero-logo {
-        width: auto;
+        display: block;
+        width: min(100%, 42rem);
         max-width: 100%;
+        height: auto;
+        margin-inline: auto;
         object-fit: contain;
-        transition:
-            height 0.55s ease,
-            max-height 0.55s ease;
-        height: 7rem;
-        max-height: 8.5rem;
+        object-position: center;
     }
 
     @media (min-width: 768px) {
         .home-hero-logo {
-            height: 8.5rem;
-            max-height: 10rem;
+            width: min(100%, 52rem);
         }
     }
 
-    .home-hero-logo.home-hero-logo--compact {
-        height: 4.5rem;
-        max-height: 5.5rem;
-    }
-
-    @media (min-width: 768px) {
-        .home-hero-logo.home-hero-logo--compact {
-            height: 5rem;
-            max-height: 6rem;
+    @media (min-width: 1024px) {
+        .home-hero-logo {
+            width: min(100%, 60rem);
         }
     }
 }

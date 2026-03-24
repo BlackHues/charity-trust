@@ -5,23 +5,25 @@
 @section('content')
     <section class="relative overflow-hidden bg-gradient-to-br from-trust-900 via-trust-700 to-trust-500 px-4 py-20 text-white md:py-28">
         <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        <div class="relative mx-auto max-w-3xl text-center">
-            <div class="mb-10 flex justify-center">
-                <img id="home-hero-logo" src="{{ asset('images/logo.png') }}" width="360" height="160" class="home-hero-logo drop-shadow-lg" alt="" role="presentation">
+        <div class="relative mx-auto w-full max-w-7xl text-center">
+            <div class="mb-10 flex w-full justify-center px-2 sm:px-4">
+                <img src="{{ asset('images/logo.png') }}" width="960" height="427" class="home-hero-logo shrink-0 drop-shadow-lg" alt="" role="presentation">
             </div>
-            <h1 class="font-serif text-4xl font-semibold leading-tight md:text-5xl">
-                Hope, education, and care for every life we touch
-            </h1>
-            <p class="mt-6 text-lg text-white/90 md:text-xl">
-                Mahavidhya Charitable Trust works to enrich the lives of underprivileged people through education, mentorship, and access to quality healthcare.
-            </p>
-            <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-                <a href="{{ route('donate') }}" class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-trust-900 shadow-lg transition hover:bg-warm-100">
-                    Support our work
-                </a>
-                <a href="{{ route('about') }}" class="rounded-xl border-2 border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
-                    Learn about us
-                </a>
+            <div class="mx-auto max-w-3xl">
+                <h1 class="font-serif text-4xl font-semibold leading-tight md:text-5xl">
+                    Hope, education, and care for every life we touch
+                </h1>
+                <p class="mt-6 text-lg text-white/90 md:text-xl">
+                    Maha Vidhya Charitable Trust works to enrich the lives of underprivileged people through education, mentorship, and access to quality healthcare.
+                </p>
+                <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+                    <a href="{{ route('donate') }}" class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-trust-900 shadow-lg transition hover:bg-warm-100">
+                        Support our work
+                    </a>
+                    <a href="{{ route('about') }}" class="rounded-xl border-2 border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+                        Learn about us
+                    </a>
+                </div>
             </div>
         </div>
     </section>
