@@ -1,0 +1,101 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Fraunces', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --color-trust-900: #0f3d3a;
+    --color-trust-700: #1a5c57;
+    --color-trust-500: #2d8a82;
+    --color-warm-100: #faf6f1;
+    --color-warm-200: #f0e8dc;
+}
+
+/* Navbar: home starts larger, matches other pages after .site-header--compact (JS @ 3s). */
+@layer components {
+    .site-header {
+        transition: padding-block 0.5s ease;
+        padding-block: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .site-header {
+            padding-block: 0.75rem;
+        }
+    }
+
+    .site-header--home:not(.site-header--compact) {
+        padding-block: 0.875rem;
+    }
+
+    @media (min-width: 768px) {
+        .site-header--home:not(.site-header--compact) {
+            padding-block: 1.125rem;
+        }
+    }
+
+    .site-header-logo {
+        width: auto;
+        object-fit: contain;
+        object-position: left center;
+        transition:
+            height 0.5s ease,
+            max-width 0.5s ease;
+        height: 2.5rem;
+        max-width: min(100%, 170px);
+    }
+
+    @media (min-width: 768px) {
+        .site-header-logo {
+            height: 2.75rem;
+            max-width: 190px;
+        }
+    }
+
+    .site-header--home:not(.site-header--compact) .site-header-logo {
+        height: 3.5rem;
+        max-width: min(100%, 240px);
+    }
+
+    @media (min-width: 768px) {
+        .site-header--home:not(.site-header--compact) .site-header-logo {
+            height: 4.25rem;
+            max-width: 260px;
+        }
+    }
+
+    .home-hero-logo {
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        transition:
+            height 0.55s ease,
+            max-height 0.55s ease;
+        height: 7rem;
+        max-height: 8.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .home-hero-logo {
+            height: 8.5rem;
+            max-height: 10rem;
+        }
+    }
+
+    .home-hero-logo.home-hero-logo--compact {
+        height: 4.5rem;
+        max-height: 5.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .home-hero-logo.home-hero-logo--compact {
+            height: 5rem;
+            max-height: 6rem;
+        }
+    }
+}
