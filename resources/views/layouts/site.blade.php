@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=dm-sans:400,500,600,700|fraunces:500,600,700" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=dm-sans:400,500,600,700|fraunces:500,600,700|montserrat:500,600,700" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-warm-100 text-stone-800 antialiased">
@@ -16,17 +16,17 @@
         <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-0 md:flex-nowrap md:gap-x-8">
             <a href="{{ route('home') }}" class="flex shrink-0 items-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-trust-700 focus-visible:ring-offset-2">
                 <img src="{{ asset('images/logo.png') }}"
-                     width="260"
-                     height="114"
+                     width="300"
+                     height="132"
                      class="site-header-logo"
                      alt="Maha Vidhya Charitable Trust — goddess Saraswati on a lotus flanked by elephants, Est. 2017">
                 <span class="sr-only">{{ config('app.name') }}</span>
             </a>
             <input type="checkbox" id="nav-toggle" class="peer sr-only" aria-hidden="true">
-            <label for="nav-toggle" class="inline-flex cursor-pointer items-center justify-center rounded-lg border border-trust-700/25 px-4 py-2 text-sm font-semibold tracking-wide text-trust-900 md:hidden">
+            <label for="nav-toggle" class="site-nav-font inline-flex cursor-pointer items-center justify-center rounded-lg border border-trust-700/20 bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-trust-900 shadow-sm transition hover:border-trust-700/35 hover:bg-white md:hidden">
                 Menu
             </label>
-            <nav class="hidden w-full basis-full flex-col gap-2 pt-3 peer-checked:flex md:flex md:w-auto md:basis-auto md:flex-row md:items-center md:gap-3 md:pt-0 md:peer-checked:flex">
+            <nav class="hidden w-full basis-full flex-col gap-1 pt-3 peer-checked:flex md:flex md:w-auto md:basis-auto md:flex-row md:items-center md:gap-1 md:pt-0 md:peer-checked:flex" aria-label="Main">
                 @php
                     $links = [
                         ['route' => 'home', 'label' => 'Home'],
@@ -41,7 +41,7 @@
                 @endphp
                 @foreach ($links as $link)
                     <a href="{{ route($link['route']) }}"
-                       class="rounded-lg px-4 py-3 text-[0.9375rem] font-medium leading-snug transition-colors md:px-3 md:py-2 {{ request()->routeIs($link['route']) ? 'bg-trust-900/[0.08] text-trust-900' : 'text-stone-600 hover:bg-trust-900/[0.05] hover:text-trust-900' }}">
+                       class="site-nav-link {{ request()->routeIs($link['route']) ? 'site-nav-link--active text-trust-900' : 'text-stone-600 hover:text-trust-900' }}">
                         {{ $link['label'] }}
                     </a>
                 @endforeach
@@ -49,7 +49,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="site-main">
         @yield('content')
     </main>
 

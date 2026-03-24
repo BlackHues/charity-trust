@@ -3,12 +3,10 @@
 @section('title', 'Join Us — '.config('app.name'))
 
 @section('content')
-    <div class="border-b border-warm-200 bg-white px-4 py-14 md:py-20">
-        <div class="mx-auto max-w-3xl text-center">
-            <h1 class="font-serif text-4xl font-semibold text-trust-900 md:text-5xl">Join us</h1>
-            <p class="mt-4 text-lg text-stone-600">Volunteer, become a member, or sponsor our work.</p>
-        </div>
-    </div>
+    <x-site-inner-hero
+        title="Join us"
+        subtitle="Volunteer, become a member, or sponsor our work."
+    />
 
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-14 md:grid-cols-3 md:py-20">
         <div class="rounded-2xl border border-warm-200 bg-white p-8 shadow-sm">

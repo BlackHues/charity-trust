@@ -3,12 +3,10 @@
 @section('title', 'Gallery — '.config('app.name'))
 
 @section('content')
-    <div class="border-b border-warm-200 bg-white px-4 py-14 md:py-20">
-        <div class="mx-auto max-w-3xl text-center">
-            <h1 class="font-serif text-4xl font-semibold text-trust-900 md:text-5xl">Gallery</h1>
-            <p class="mt-4 text-lg text-stone-600">Moments from our programmes and community work.</p>
-        </div>
-    </div>
+    <x-site-inner-hero
+        title="Gallery"
+        subtitle="Moments from our programmes and community work."
+    />
 
     <div class="mx-auto max-w-6xl px-4 py-14 md:py-20">
         @if ($images->isEmpty())

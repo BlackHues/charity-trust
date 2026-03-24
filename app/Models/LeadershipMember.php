@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class LeadershipMember extends Model
 {
@@ -21,6 +20,8 @@ class LeadershipMember extends Model
             return null;
         }
 
-        return Storage::disk('public')->url($this->image_path);
+        $path = str_replace('\\', '/', $this->image_path);
+
+        return '/storage/'.ltrim($path, '/');
     }
 }

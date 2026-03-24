@@ -1,7 +1,14 @@
 <?php
 
 return [
+    /** Full URL for inner-page hero photo. If empty, `inner_hero_path` under public_html is used when the file exists. */
+    'inner_hero_url' => env('SITE_INNER_HERO_URL'),
+    /** Relative to public_html, e.g. images/inner-hero.jpg */
+    'inner_hero_path' => env('SITE_INNER_HERO_PATH', 'images/inner-hero.jpg'),
+
     'map_url' => env('SITE_MAP_URL', 'https://maps.app.goo.gl/mnDFkDWzPoZVq8hk7'),
+    /** Full URL to donation UPI QR image, e.g. https://yoursite.in/storage/donation-qr.png — overrides file in public_html/images */
+    'donation_qr_url' => env('SITE_DONATION_QR_URL'),
     'whatsapp' => env('SITE_WHATSAPP', '7200600122'),
     'phone_secondary' => env('SITE_PHONE_SECONDARY', '8838451331'),
     'addresses' => [

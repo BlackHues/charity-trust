@@ -3,16 +3,12 @@
 @section('title', 'Leadership Team — '.config('app.name'))
 
 @section('content')
-    <div class="border-b border-warm-200 bg-white px-4 py-14 md:py-20">
-        <div class="mx-auto max-w-3xl text-center">
-            <h1 class="font-serif text-4xl font-semibold text-trust-900 md:text-5xl">Leadership team</h1>
-            <p class="mt-4 text-lg text-stone-600">Board of trustees</p>
-            <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm">
-                <a href="tel:+91{{ config('site.whatsapp') }}" class="rounded-full bg-trust-900 px-5 py-2 font-semibold text-white transition hover:bg-trust-700">Click to call</a>
-                <a href="https://wa.me/91{{ config('site.whatsapp') }}" class="rounded-full border border-trust-900/20 px-5 py-2 font-semibold text-trust-900 transition hover:bg-trust-900/5" rel="noopener noreferrer" target="_blank">WhatsApp {{ config('site.whatsapp') }}</a>
-            </div>
+    <x-site-inner-hero title="Leadership team" subtitle="Board of trustees">
+        <div class="mx-auto flex w-full max-w-lg flex-wrap justify-center gap-3 text-sm sm:gap-4">
+            <a href="tel:+91{{ config('site.whatsapp') }}" class="rounded-full bg-white px-5 py-2 font-semibold text-trust-900 shadow-sm transition hover:bg-warm-100">Click to call</a>
+            <a href="https://wa.me/91{{ config('site.whatsapp') }}" class="rounded-full border-2 border-white/50 bg-white/10 px-5 py-2 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20" rel="noopener noreferrer" target="_blank">WhatsApp {{ config('site.whatsapp') }}</a>
         </div>
-    </div>
+    </x-site-inner-hero>
 
     <div class="mx-auto max-w-6xl px-4 py-14 md:py-20">
         @if ($members->isEmpty())

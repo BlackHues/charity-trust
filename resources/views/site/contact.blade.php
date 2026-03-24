@@ -3,12 +3,7 @@
 @section('title', 'Reach Us — '.config('app.name'))
 
 @section('content')
-    <div class="border-b border-warm-200 bg-white px-4 py-14 md:py-20">
-        <div class="mx-auto max-w-3xl text-center">
-            <h1 class="font-serif text-4xl font-semibold text-trust-900 md:text-5xl">Reach us</h1>
-            <p class="mt-4 text-lg text-stone-600">Locations across Tamil Nadu</p>
-        </div>
-    </div>
+    <x-site-inner-hero title="Reach us" subtitle="Locations across Tamil Nadu" />
 
     <div class="mx-auto max-w-3xl space-y-10 px-4 py-14 md:py-20">
         <div class="rounded-2xl border border-trust-900/10 bg-trust-900 p-8 text-white">

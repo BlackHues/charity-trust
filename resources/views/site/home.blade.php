@@ -3,24 +3,24 @@
 @section('title', 'Home — '.config('app.name'))
 
 @section('content')
-    <section class="relative overflow-hidden bg-gradient-to-br from-trust-900 via-trust-700 to-trust-500 px-4 py-20 text-white md:py-28">
+    <section class="relative flex min-h-[calc(100svh-4rem)] flex-col justify-center overflow-hidden bg-gradient-to-br from-trust-900 via-trust-700 to-trust-500 px-4 py-6 text-white md:min-h-[calc(100svh-4.25rem)] md:py-8">
         <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        <div class="relative mx-auto w-full max-w-7xl text-center">
-            <div class="mb-10 flex w-full justify-center px-2 sm:px-4">
-                <img src="{{ asset('images/logo.png') }}" width="960" height="427" class="home-hero-logo shrink-0 drop-shadow-lg" alt="" role="presentation">
+        <div class="relative mx-auto flex w-full max-w-7xl flex-col justify-center text-center">
+            <div class="mb-4 flex w-full justify-center px-2 sm:mb-5 sm:px-4">
+                <img src="{{ asset('images/logo.png') }}" width="360" height="158" class="home-hero-logo shrink-0 drop-shadow-lg" alt="" role="presentation">
             </div>
             <div class="mx-auto max-w-3xl">
-                <h1 class="font-serif text-4xl font-semibold leading-tight md:text-5xl">
+                <h1 class="text-balance font-serif text-3xl font-semibold leading-tight md:text-4xl lg:text-[2.5rem]">
                     Hope, education, and care for every life we touch
                 </h1>
-                <p class="mt-6 text-lg text-white/90 md:text-xl">
+                <p class="mt-4 text-sm leading-relaxed text-white/90 md:mt-5 md:text-base">
                     Maha Vidhya Charitable Trust works to enrich the lives of underprivileged people through education, mentorship, and access to quality healthcare.
                 </p>
-                <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-                    <a href="{{ route('donate') }}" class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-trust-900 shadow-lg transition hover:bg-warm-100">
+                <div class="mt-6 flex flex-wrap items-center justify-center gap-3 md:mt-8 md:gap-4">
+                    <a href="{{ route('donate') }}" class="rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-trust-900 shadow-lg transition hover:bg-warm-100 md:px-6 md:py-3">
                         Support our work
                     </a>
-                    <a href="{{ route('about') }}" class="rounded-xl border-2 border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+                    <a href="{{ route('about') }}" class="rounded-xl border-2 border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 md:px-6 md:py-3">
                         Learn about us
                     </a>
                 </div>
@@ -29,26 +29,42 @@
     </section>
 
     <section class="mx-auto max-w-6xl px-4 py-16 md:py-20">
-        <div class="grid gap-12 md:grid-cols-2 md:items-center">
-            <div>
-                <h2 class="font-serif text-3xl font-semibold text-trust-900 md:text-4xl">Who we are</h2>
-                <p class="mt-4 leading-relaxed text-stone-700">
-                    We stand for the right of every child to be educated, live healthy, and lead a happy life. Through programmes in villages and support for unemployed youth, we help people become self-reliant and strengthen their families and communities.
-                </p>
-                <a href="{{ route('about') }}" class="mt-6 inline-flex text-sm font-semibold text-trust-700 underline decoration-trust-500 underline-offset-4 hover:text-trust-900">
-                    Read our full story →
-                </a>
-            </div>
-            <div class="rounded-2xl border border-warm-200 bg-white p-8 shadow-sm">
-                <h3 class="font-serif text-xl font-semibold text-trust-900">Mission</h3>
-                <p class="mt-3 text-stone-700 leading-relaxed">
-                    To ensure quality of life and maximise opportunity by providing medical care, food, education, and decent accommodation—helping people return to normal life with dignity and social respect.
-                </p>
-                <h3 class="mt-8 font-serif text-xl font-semibold text-trust-900">Vision</h3>
-                <p class="mt-3 text-stone-700 leading-relaxed">
-                    To uplift economically marginalised people by meeting essential needs and improving access to a better quality of life.
-                </p>
-            </div>
+        <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
+            <h2 class="font-serif text-3xl font-semibold text-trust-900 md:text-4xl">Who we are</h2>
+            <p class="mt-5 max-w-2xl text-pretty leading-relaxed text-stone-700 md:mt-6">
+                We stand for the right of every child to be educated, live healthy, and lead a happy life. Through programmes in villages and support for unemployed youth, we help people become self-reliant and strengthen their families and communities.
+            </p>
+            <a href="{{ route('about') }}" class="mt-7 inline-flex text-sm font-semibold text-trust-700 underline decoration-trust-500 underline-offset-4 hover:text-trust-900 md:mt-8">
+                Read our full story →
+            </a>
+
+            <figure class="group mt-12 w-full max-w-[min(100%,14rem)] sm:max-w-[15rem] md:mt-14 md:max-w-[17rem]">
+                <div
+                    class="relative mx-auto aspect-[3/4] w-full overflow-hidden rounded-2xl border border-warm-200 bg-warm-100 shadow-[0_24px_60px_-16px_rgb(15_61_58_/_22%)] ring-1 ring-trust-900/[0.06]"
+                >
+                    <div
+                        class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-br from-trust-500/15 via-transparent to-trust-900/10 opacity-90 transition duration-500 group-hover:opacity-100"
+                        aria-hidden="true"
+                    ></div>
+                    <img
+                        src="{{ asset('images/home-about-care.png') }}"
+                        width="800"
+                        height="1067"
+                        class="relative z-[1] h-full w-full object-cover object-[center_28%] transition duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
+                        alt="A young child and caring adult together outdoors, reflecting protection and family support"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
+                <figcaption class="mx-auto mt-5 max-w-[16rem] px-1 md:mt-6 md:max-w-xs">
+                    <p class="font-serif text-lg font-semibold leading-snug text-trust-900 md:text-xl">
+                        Care in every generation
+                    </p>
+                    <p class="mt-2 text-sm leading-relaxed text-stone-600 md:text-base">
+                        Protection, trust, and hope—values we bring to every family and community we serve.
+                    </p>
+                </figcaption>
+            </figure>
         </div>
     </section>
 
