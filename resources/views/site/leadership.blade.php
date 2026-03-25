@@ -3,7 +3,11 @@
 @section('title', 'Leadership Team — '.config('app.name'))
 
 @section('content')
-    <x-site-inner-hero title="Leadership team" subtitle="Board of trustees">
+    <x-site-inner-hero
+        title="Leadership team"
+        subtitle="Board of trustees"
+        icon="fa-solid fa-user-tie"
+    >
         <div class="mx-auto flex w-full max-w-lg flex-wrap justify-center gap-3 text-sm sm:gap-4">
             <a href="tel:+91{{ config('site.whatsapp') }}" class="rounded-full bg-white px-5 py-2 font-semibold text-trust-900 shadow-sm transition hover:bg-warm-100">Click to call</a>
             <a href="https://wa.me/91{{ config('site.whatsapp') }}" class="rounded-full border-2 border-white/50 bg-white/10 px-5 py-2 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20" rel="noopener noreferrer" target="_blank">WhatsApp {{ config('site.whatsapp') }}</a>
@@ -12,7 +16,10 @@
 
     <div class="mx-auto max-w-6xl px-4 py-14 md:py-20">
         @if ($members->isEmpty())
-            <p class="text-center text-stone-600">Leadership information will be updated soon.</p>
+            <p class="flex items-center justify-center gap-3 text-center text-stone-600">
+                <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+                Leadership information will be updated soon.
+            </p>
         @else
             <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($members as $member)
@@ -27,7 +34,10 @@
                             @endif
                         </div>
                         <div class="p-6">
-                            <h2 class="font-serif text-lg font-semibold text-trust-900">{{ $member->name }}</h2>
+                            <h2 class="inline-flex items-center gap-3 font-serif text-lg font-semibold text-trust-900">
+                                <i class="fa-solid fa-user-tie text-trust-500" aria-hidden="true"></i>
+                                {{ $member->name }}
+                            </h2>
                             @if ($member->qualifications)
                                 <p class="mt-1 text-sm text-stone-600">{{ $member->qualifications }}</p>
                             @endif

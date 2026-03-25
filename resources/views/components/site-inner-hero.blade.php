@@ -2,6 +2,7 @@
     'title',
     'subtitle' => null,
     'backgroundImage' => null,
+    'icon' => null,
 ])
 
 @php
@@ -36,7 +37,16 @@
         <div class="pointer-events-none absolute inset-0 z-[1] bg-black/30"></div>
     @endif
     <div class="relative z-10 mx-auto w-full max-w-6xl px-4 text-center">
-        <h1 class="font-serif text-4xl font-semibold tracking-tight md:text-5xl">{{ $title }}</h1>
+        <h1 class="font-serif text-4xl font-semibold tracking-tight md:text-5xl">
+            @if (filled($icon))
+                <span class="inline-flex items-center gap-3">
+                    <i class="{{ $icon }} text-white/90" aria-hidden="true"></i>
+                    <span>{{ $title }}</span>
+                </span>
+            @else
+                {{ $title }}
+            @endif
+        </h1>
         @if (filled($subtitle))
             <p class="mx-auto mt-4 max-w-3xl text-pretty text-lg leading-relaxed text-white md:mt-5 md:text-xl">{{ $subtitle }}</p>
         @endif

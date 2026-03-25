@@ -9,6 +9,7 @@
     <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=dm-sans:400,500,600,700|fraunces:500,600,700|montserrat:500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-warm-100 text-stone-800 antialiased">
@@ -54,20 +55,103 @@
     </main>
 
     <footer class="mt-16 border-t border-warm-200 bg-trust-900 text-stone-200">
+        @php
+            $mainAddress = config('site.addresses')[0] ?? null;
+        @endphp
         <div class="mx-auto max-w-6xl space-y-6 px-4 py-12">
-            <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                <div class="flex items-center gap-4">
-                    <img src="{{ asset('images/logo.png') }}" width="120" height="52" class="h-12 w-auto max-w-[120px] object-contain drop-shadow-md" alt="" role="presentation">
-                    <p class="font-serif text-lg font-semibold text-white">{{ config('app.name') }}</p>
+            <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-8">
+                <div class="w-full max-w-md space-y-4">
+                    <div class="flex items-center gap-4">
+                        <img src="{{ asset('images/logo.png') }}" width="120" height="52" class="h-12 w-auto max-w-[120px] object-contain drop-shadow-md" alt="" role="presentation">
+                        <p class="font-serif text-lg font-semibold text-white">{{ config('app.name') }}</p>
+                    </div>
+                    @if ($mainAddress)
+                        <div class="flex gap-3 text-sm">
+                            <i class="fa-solid fa-location-dot mt-0.5 shrink-0 text-trust-500" aria-hidden="true"></i>
+                            <div>
+                                <p class="font-semibold text-white">{{ $mainAddress['label'] }}</p>
+                                <p class="mt-1 leading-relaxed text-stone-400">
+                                    <span class="font-medium text-stone-200">{{ config('app.name') }}</span><br>
+                                    @foreach ($mainAddress['lines'] as $line)
+                                        {{ $line }}@if (! $loop->last)<br>@endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="site-footer-map overflow-hidden rounded-lg border border-trust-600/35 bg-stone-900/40 shadow-inner" aria-label="Main branch — Gudiyatham on Google Maps">
+                        <div class="relative h-44 w-full sm:h-48">
+                            <iframe
+                                src="{{ config('site.map_embed_url') }}"
+                                class="absolute inset-0 h-full w-full border-0"
+                                width="448"
+                                height="336"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Google Map — 44 Melpatti Road, Gudiyatham"
+                            ></iframe>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-wrap gap-4 text-sm">
-                    <a href="tel:+91{{ config('site.whatsapp') }}" class="underline decoration-trust-500 underline-offset-4 hover:text-white">Call {{ config('site.whatsapp') }}</a>
-                    <a href="https://wa.me/91{{ config('site.whatsapp') }}" class="underline decoration-trust-500 underline-offset-4 hover:text-white" rel="noopener noreferrer" target="_blank">WhatsApp</a>
-                    <a href="{{ config('site.map_url') }}" class="underline decoration-trust-500 underline-offset-4 hover:text-white" rel="noopener noreferrer" target="_blank">Map</a>
+                <div class="flex shrink-0 flex-wrap items-center gap-2 md:pt-1" aria-label="Call and messaging">
+                    <a
+                        href="tel:+91{{ preg_replace('/\D/', '', config('site.whatsapp')) }}"
+                        class="site-contact-fab site-contact-fab--phone"
+                        title="Call {{ config('site.whatsapp') }}"
+                    >
+                        <span class="sr-only">Call {{ config('site.whatsapp') }}</span>
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                    </a>
+                    <a
+                        href="https://wa.me/91{{ preg_replace('/\D/', '', config('site.whatsapp')) }}"
+                        class="site-contact-fab site-contact-fab--whatsapp"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        title="WhatsApp {{ config('site.whatsapp') }}"
+                    >
+                        <span class="sr-only">WhatsApp {{ config('site.whatsapp') }}</span>
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                    </a>
+                    <a
+                        href="{{ route('contact') }}"
+                        class="site-contact-fab"
+                        title="Reach us"
+                    >
+                        <span class="sr-only">Reach us</span>
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
+
             <p class="text-sm text-stone-400">© {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
         </div>
     </footer>
+
+    @if (request()->routeIs('home'))
+        @php
+            $waDigits = preg_replace('/\D/', '', config('site.whatsapp'));
+        @endphp
+        <div class="site-contact-fabs" role="region" aria-label="Quick call and WhatsApp">
+            <a
+                href="tel:+91{{ $waDigits }}"
+                class="site-contact-fab site-contact-fab--phone"
+                title="Call {{ config('site.whatsapp') }}"
+            >
+                <span class="sr-only">Call {{ config('site.whatsapp') }}</span>
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            </a>
+            <a
+                href="https://wa.me/91{{ $waDigits }}"
+                class="site-contact-fab site-contact-fab--whatsapp"
+                rel="noopener noreferrer"
+                target="_blank"
+                title="WhatsApp {{ config('site.whatsapp') }}"
+            >
+                <span class="sr-only">Open WhatsApp chat with {{ config('site.whatsapp') }}</span>
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            </a>
+        </div>
+    @endif
 </body>
 </html>

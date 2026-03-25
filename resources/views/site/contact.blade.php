@@ -3,21 +3,46 @@
 @section('title', 'Reach Us — '.config('app.name'))
 
 @section('content')
-    <x-site-inner-hero title="Reach us" subtitle="Locations across Tamil Nadu" />
+    <x-site-inner-hero
+        title="Reach us"
+        subtitle="Locations across Tamil Nadu"
+        icon="fa-solid fa-location-dot"
+    />
 
     <div class="mx-auto max-w-3xl space-y-10 px-4 py-14 md:py-20">
         <div class="rounded-2xl border border-trust-900/10 bg-trust-900 p-8 text-white">
-            <h2 class="font-serif text-xl font-semibold">Connect</h2>
-            <ul class="mt-4 space-y-2 text-sm text-white/90">
-                <li>
-                    <a href="tel:+91{{ config('site.whatsapp') }}" class="underline decoration-trust-500 underline-offset-4 hover:text-white">Call / WhatsApp: {{ config('site.whatsapp') }}</a>
-                </li>
-                <li>
-                    <a href="https://wa.me/91{{ config('site.whatsapp') }}" class="underline decoration-trust-500 underline-offset-4 hover:text-white" rel="noopener noreferrer" target="_blank">Open WhatsApp chat</a>
-                </li>
-                <li>Additional contact: {{ config('site.phone_secondary') }}</li>
-            </ul>
-            <a href="{{ config('site.map_url') }}" class="mt-6 inline-flex rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-trust-900 transition hover:bg-warm-100" rel="noopener noreferrer" target="_blank">Open map (Chennai)</a>
+            <h2 class="inline-flex items-center gap-3 font-serif text-xl font-semibold">
+                <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+                Connect
+            </h2>
+            <div class="mt-4 flex flex-wrap items-center gap-2" aria-label="Connect">
+                <a
+                    href="tel:+91{{ preg_replace('/\D/', '', config('site.whatsapp')) }}"
+                    class="site-contact-fab site-contact-fab--phone"
+                    title="Call {{ config('site.whatsapp') }}"
+                >
+                    <span class="sr-only">Call {{ config('site.whatsapp') }}</span>
+                    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                </a>
+                <a
+                    href="https://wa.me/91{{ preg_replace('/\D/', '', config('site.whatsapp')) }}"
+                    class="site-contact-fab site-contact-fab--whatsapp"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    title="WhatsApp {{ config('site.whatsapp') }}"
+                >
+                    <span class="sr-only">WhatsApp {{ config('site.whatsapp') }}</span>
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                </a>
+                <a
+                    href="tel:+91{{ preg_replace('/\D/', '', config('site.phone_secondary')) }}"
+                    class="site-contact-fab"
+                    title="Additional line {{ config('site.phone_secondary') }}"
+                >
+                    <span class="sr-only">Call additional {{ config('site.phone_secondary') }}</span>
+                    <i class="fa-solid fa-headset" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
 
         @foreach (config('site.addresses') as $block)

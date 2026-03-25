@@ -7,12 +7,25 @@ function collectRevealTargets(main) {
         const tag = child.tagName;
 
         if (tag === 'SECTION') {
-            targets.push(child);
+            // Prefer animating repeated "card" items inside sections
+            // (e.g. items rendered via @foreach), instead of the whole section.
+            const cards = child.querySelectorAll(':scope .rounded-2xl, :scope ul > li');
+            if (cards.length) {
+                targets.push(...cards);
+            } else {
+                targets.push(child);
+            }
             continue;
         }
 
         if (tag === 'ARTICLE') {
-            targets.push(...child.querySelectorAll(':scope > *'));
+            // Similar logic for article pages: animate card/list items first.
+            const cards = child.querySelectorAll(':scope .rounded-2xl, :scope ul > li');
+            if (cards.length) {
+                targets.push(...cards);
+            } else {
+                targets.push(...child.querySelectorAll(':scope > *'));
+            }
             continue;
         }
 
@@ -76,8 +89,64 @@ function initRevealOnScroll() {
     targets.forEach((el) => observer.observe(el));
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initRevealOnScroll);
-} else {
+/** Home-page floating call / WhatsApp: hide on scroll down, show on scroll up; grace period after load. */
+function initContactFabScrollHide() {
+    const fab = document.querySelector('.site-contact-fabs');
+    if (!fab) {
+        return;
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    const GRACE_MS = 3500;
+    const TOP_ALWAYS_SHOW_PX = 56;
+    const SCROLL_DELTA = 8;
+
+    let lastY = window.scrollY;
+    let graceActive = true;
+
+    window.setTimeout(() => {
+        graceActive = false;
+    }, GRACE_MS);
+
+    window.addEventListener(
+        'scroll',
+        () => {
+            const y = window.scrollY;
+
+            if (graceActive) {
+                fab.classList.remove('site-contact-fabs--hidden');
+                lastY = y;
+                return;
+            }
+
+            if (y <= TOP_ALWAYS_SHOW_PX) {
+                fab.classList.remove('site-contact-fabs--hidden');
+                lastY = y;
+                return;
+            }
+
+            const delta = y - lastY;
+            if (delta > SCROLL_DELTA) {
+                fab.classList.add('site-contact-fabs--hidden');
+            } else if (delta < -SCROLL_DELTA) {
+                fab.classList.remove('site-contact-fabs--hidden');
+            }
+            lastY = y;
+        },
+        { passive: true },
+    );
+}
+
+function initSiteUi() {
     initRevealOnScroll();
+    initContactFabScrollHide();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSiteUi);
+} else {
+    initSiteUi();
 }
