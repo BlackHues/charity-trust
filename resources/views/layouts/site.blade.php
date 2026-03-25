@@ -87,11 +87,15 @@
                                 width="448"
                                 height="336"
                                 allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
+                                allow="fullscreen"
+                                loading="eager"
+                                referrerpolicy="strict-origin-when-cross-origin"
                                 title="Google Map — 44 Melpatti Road, Gudiyatham"
                             ></iframe>
                         </div>
+                        <p class="border-t border-trust-600/25 px-2 py-1.5 text-center text-[0.65rem] text-stone-400">
+                            <a href="{{ config('site.map_url') }}" class="text-trust-400 underline decoration-trust-500/60 underline-offset-2 hover:text-white" rel="noopener noreferrer" target="_blank">Open map in Google Maps</a>
+                        </p>
                     </div>
                 </div>
                 <div class="flex shrink-0 flex-wrap items-center gap-2 md:pt-1" aria-label="Call and messaging">
