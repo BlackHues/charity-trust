@@ -276,7 +276,6 @@ function initSiteNavDrawer() {
     const toggle = document.querySelector('[data-site-nav-toggle]');
     const backdrop = document.querySelector('[data-site-nav-backdrop]');
     const drawer = document.querySelector('[data-site-nav-drawer]');
-    const closeBtn = document.querySelector('[data-site-nav-close]');
 
     if (!toggle || !backdrop || !drawer) {
         return;
@@ -284,6 +283,8 @@ function initSiteNavDrawer() {
 
     const drawerLinks = drawer.querySelectorAll('[data-site-nav-drawer-link]');
     const mq = window.matchMedia('(min-width: 1536px)');
+
+    let pointerDownPos = null;
 
     const setOpen = (open) => {
         document.body.classList.toggle('site-nav-open', open);
@@ -296,12 +297,29 @@ function initSiteNavDrawer() {
 
     const close = () => setOpen(false);
 
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+            pointerDownPos = { x: event.clientX, y: event.clientY };
+        } else {
+            pointerDownPos = null;
+        }
+    });
+
+    toggle.addEventListener('click', (event) => {
+        if (pointerDownPos) {
+            const dx = Math.abs(event.clientX - pointerDownPos.x);
+            const dy = Math.abs(event.clientY - pointerDownPos.y);
+
+            if (dx > 10 || dy > 10) {
+                pointerDownPos = null;
+                return;
+            }
+        }
+
         setOpen(!document.body.classList.contains('site-nav-open'));
     });
 
     backdrop.addEventListener('click', close);
-    closeBtn?.addEventListener('click', close);
 
     drawerLinks.forEach((a) => {
         a.addEventListener('click', close);

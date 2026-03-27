@@ -67,17 +67,6 @@
             data-site-nav-drawer
         >
             <div class="site-nav-drawer-inner">
-                <div class="site-nav-drawer-head">
-                    <span class="site-nav-drawer-title">Menu</span>
-                    <button
-                        type="button"
-                        class="site-nav-drawer-close"
-                        data-site-nav-close
-                        aria-label="Close menu"
-                    >
-                        <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
-                    </button>
-                </div>
                 <nav class="site-nav-drawer-nav" aria-label="Main">
                     @foreach ($mainNavLinks as $link)
                         <a

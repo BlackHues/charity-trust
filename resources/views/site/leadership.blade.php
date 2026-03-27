@@ -7,12 +7,7 @@
         title="Leadership team"
         subtitle="Board of trustees"
         icon="fa-solid fa-user-tie"
-    >
-        <div class="mx-auto flex w-full max-w-lg flex-wrap justify-center gap-3 text-sm sm:gap-4">
-            <a href="tel:+91{{ config('site.whatsapp') }}" class="rounded-full bg-white px-5 py-2 font-semibold text-trust-900 shadow-sm transition hover:bg-warm-100">Click to call</a>
-            <a href="https://wa.me/91{{ config('site.whatsapp') }}" class="rounded-full border-2 border-white/50 bg-white/10 px-5 py-2 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20" rel="noopener noreferrer" target="_blank">WhatsApp {{ config('site.whatsapp') }}</a>
-        </div>
-    </x-site-inner-hero>
+    />
 
     <div class="mx-auto max-w-6xl px-4 py-14 md:py-20">
         @if ($members->isEmpty())
