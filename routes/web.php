@@ -11,6 +11,7 @@ Route::get('/', [SiteController::class, 'home'])->name('home');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
 Route::get('/services', [SiteController::class, 'services'])->name('services');
 Route::get('/join-us', [SiteController::class, 'joinUs'])->name('join-us');
+Route::post('/inquiry', [SiteController::class, 'submitInquiry'])->name('inquiry.submit');
 Route::get('/leadership', [SiteController::class, 'leadership'])->name('leadership');
 Route::get('/gallery', [SiteController::class, 'gallery'])->name('gallery');
 Route::get('/donate', [SiteController::class, 'donate'])->name('donate');

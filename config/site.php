@@ -34,6 +34,17 @@ return [
     'donation_qr_url' => env('SITE_DONATION_QR_URL'),
     'whatsapp' => env('SITE_WHATSAPP', '7200600122'),
     'phone_secondary' => env('SITE_PHONE_SECONDARY', '8838451331'),
+    'inquiry_recipient' => env('SITE_INQUIRY_RECIPIENT', env('ADMIN_EMAIL', env('MAIL_FROM_ADDRESS', ''))),
+
+    /** Full profile URLs — leave empty to hide an icon in the footer. */
+    'social' => [
+        'facebook' => env('SITE_SOCIAL_FACEBOOK'),
+        'instagram' => env('SITE_SOCIAL_INSTAGRAM'),
+        'youtube' => env('SITE_SOCIAL_YOUTUBE'),
+        'x' => env('SITE_SOCIAL_X'),
+        'linkedin' => env('SITE_SOCIAL_LINKEDIN'),
+    ],
+
     'addresses' => [
         [
             'label' => 'Main branch — Gudiyatham',

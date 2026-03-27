@@ -39,10 +39,12 @@
         </div>
     </div>
 
-    <div class="mx-auto max-w-3xl px-4 pb-16 text-center">
-        <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 rounded-xl bg-trust-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-trust-700">
-            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-            Contact us to get started
-        </a>
+    <div class="mx-auto max-w-6xl px-4 pb-16">
+        @include('site.partials.inquiry-form', [
+            'title' => 'Join / Volunteer / Sponsor Form',
+            'subtitle' => 'Choose your interest and submit your details.',
+            'selectedType' => $selectedType ?? 'join',
+            'sourcePage' => 'join-us',
+        ])
     </div>
 @endsection

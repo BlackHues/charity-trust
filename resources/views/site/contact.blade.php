@@ -45,6 +45,13 @@
             </div>
         </div>
 
+        @include('site.partials.inquiry-form', [
+            'title' => 'Reach Us Form',
+            'subtitle' => 'Use this common form for enquiry, volunteering, sponsoring, or institution partnerships.',
+            'selectedType' => $selectedType ?? 'enquiry',
+            'sourcePage' => 'contact',
+        ])
+
         @foreach (config('site.addresses') as $block)
             <div class="rounded-2xl border border-warm-200 bg-white p-8 shadow-sm">
                 <h2 class="font-serif text-lg font-semibold text-trust-900">{{ $block['label'] }}</h2>

@@ -37,6 +37,15 @@
                     </div>
                 @endif
             </div>
+            <div class="mx-auto mt-8 max-w-lg rounded-xl border border-trust-500/25 bg-trust-900/[0.03] px-4 py-4 text-left text-sm leading-relaxed text-stone-700 md:px-5">
+                <p class="inline-flex items-start gap-2 font-semibold text-trust-900">
+                    <i class="fa-solid fa-landmark mt-0.5 shrink-0 text-trust-500" aria-hidden="true"></i>
+                    <span>12A &amp; 80G registration</span>
+                </p>
+                <p class="mt-2 text-pretty">
+                    Maha Vidhya Charitable Trust is a 12A &amp; 80G registered NGO. Tax Exemption Allowed under Section 80G Exemption Order No. URNO. AAFTM3843EF20261/80G Order Date 07-02-2026. Income Tax Department Government of India.
+                </p>
+            </div>
             <p class="mt-6 inline-flex items-center gap-2 text-sm text-stone-500">
                 <i class="fa-solid fa-receipt" aria-hidden="true"></i>
                 UPI ID
