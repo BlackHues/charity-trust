@@ -21,3 +21,6 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Accidental Cursor workspace copies under images (very long paths break git add on Windows)
+/public_html/images/c__Users_*

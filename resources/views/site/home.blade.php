@@ -114,47 +114,57 @@
         </div>
     </section>
 
-    <section class="mx-auto max-w-6xl px-4 py-16 md:py-20">
-        <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-            <h2 class="inline-flex items-center gap-3 font-serif text-3xl font-semibold text-trust-900 md:text-4xl">
-                <i class="fa-solid fa-user-group text-trust-500" aria-hidden="true"></i>
-                Who we are
-            </h2>
-            <p class="mt-5 max-w-2xl text-pretty leading-relaxed text-stone-700 md:mt-6">
-                We stand for the right of every child to be educated, live healthy, and lead a happy life. Through programmes in villages and support for unemployed youth, we help people become self-reliant and strengthen their families and communities.
-            </p>
-            <a href="{{ route('about') }}" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-trust-700 underline decoration-trust-500 underline-offset-4 hover:text-trust-900 md:mt-8">
-                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                Read our full story
-            </a>
+    <section class="bg-gradient-to-b from-white to-warm-100/70 py-16 md:py-20">
+        <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-2 lg:gap-14">
+            <div>
+                <h2 class="inline-flex items-center gap-3 font-serif text-3xl font-semibold text-trust-900 md:text-4xl">
+                    <i class="fa-solid fa-user-group text-trust-500" aria-hidden="true"></i>
+                    Who we are
+                </h2>
+                <p class="mt-5 max-w-2xl text-pretty leading-relaxed text-stone-700 md:mt-6">
+                    We stand for the right of every child to be educated, live healthy, and lead a happy life. Through programmes in villages and support for unemployed youth, we help people become self-reliant and strengthen their families and communities.
+                </p>
+                <a href="{{ route('about') }}" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-trust-700 underline decoration-trust-500 underline-offset-4 hover:text-trust-900 md:mt-8">
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    Read our full story
+                </a>
+            </div>
 
-            <figure class="group mt-12 w-full max-w-[min(100%,14rem)] sm:max-w-[15rem] md:mt-14 md:max-w-[17rem]">
-                <div
-                    class="relative mx-auto aspect-[3/4] w-full overflow-hidden rounded-2xl border border-warm-200 bg-warm-100 shadow-[0_24px_60px_-16px_rgb(15_61_58_/_22%)] ring-1 ring-trust-900/[0.06]"
-                >
-                    <div
-                        class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-br from-trust-500/15 via-transparent to-trust-900/10 opacity-90 transition duration-500 group-hover:opacity-100"
-                        aria-hidden="true"
-                    ></div>
+            <div class="grid grid-cols-2 gap-4">
+                <figure class="group col-span-2 overflow-hidden rounded-2xl border border-warm-200 bg-white shadow-sm">
                     <img
-                        src="{{ asset('images/home-about-care.png') }}"
-                        width="800"
-                        height="1067"
-                        class="relative z-[1] h-full w-full object-cover object-[center_28%] transition duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
-                        alt="A young child and caring adult together outdoors, reflecting protection and family support"
+                        src="{{ asset('images/photo-kids-unity.png') }}"
+                        width="1024"
+                        height="1024"
+                        class="h-52 w-full object-cover transition duration-700 ease-out group-hover:scale-[1.02] md:h-60"
+                        alt="Children joining hands in a circle, representing unity and joy"
                         loading="lazy"
                         decoding="async"
                     >
-                </div>
-                <figcaption class="mx-auto mt-5 max-w-[16rem] px-1 md:mt-6 md:max-w-xs">
-                    <p class="font-serif text-lg font-semibold leading-snug text-trust-900 md:text-xl">
-                        Care in every generation
-                    </p>
-                    <p class="mt-2 text-sm leading-relaxed text-stone-600 md:text-base">
-                        Protection, trust, and hope—values we bring to every family and community we serve.
-                    </p>
-                </figcaption>
-            </figure>
+                </figure>
+                <figure class="group overflow-hidden rounded-2xl border border-warm-200 bg-white shadow-sm">
+                    <img
+                        src="{{ asset('images/photo-child-house.png') }}"
+                        width="1024"
+                        height="768"
+                        class="h-44 w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03] md:h-48"
+                        alt="Child holding a model house to represent shelter and safety"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </figure>
+                <figure class="group overflow-hidden rounded-2xl border border-warm-200 bg-white shadow-sm">
+                    <img
+                        src="{{ asset('images/photo-holding-hands.png') }}"
+                        width="768"
+                        height="1024"
+                        class="h-44 w-full object-cover object-[center_32%] transition duration-700 ease-out group-hover:scale-[1.03] md:h-48"
+                        alt="Adult and child holding hands, symbolising guidance and care"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </figure>
+            </div>
         </div>
     </section>
 
@@ -166,6 +176,17 @@
                     How we help
                 </span>
             </h2>
+            <div class="mt-8 overflow-hidden rounded-2xl border border-warm-200 bg-warm-100 shadow-sm">
+                <img
+                    src="{{ asset('images/photo-food-service.png') }}"
+                    width="1024"
+                    height="768"
+                    class="h-52 w-full object-cover object-center md:h-64"
+                    alt="Volunteers serving food to children during a community programme"
+                    loading="lazy"
+                    decoding="async"
+                >
+            </div>
             <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach ([
                     ['Education', 'Formal and non-formal learning, health and legal awareness, and support for competitive exams.', 'fa-solid fa-graduation-cap'],
@@ -185,23 +206,38 @@
         </div>
     </section>
 
-    <section class="mx-auto max-w-6xl px-4 py-16 text-center">
-        <h2 class="inline-flex items-center gap-3 font-serif text-3xl font-semibold text-trust-900">
-            <i class="fa-solid fa-users text-trust-500" aria-hidden="true"></i>
-            Get involved
-        </h2>
-        <p class="mx-auto mt-4 max-w-2xl text-stone-700">
-            Volunteer with us, become a member, or sponsor an initiative. Every contribution helps us reach more families.
-        </p>
-        <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <a href="{{ route('join-us') }}" class="inline-flex items-center gap-2 rounded-xl bg-trust-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-trust-700">
-                <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
-                Join us
-            </a>
-            <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 rounded-xl border border-trust-900/20 px-6 py-3 text-sm font-semibold text-trust-900 transition hover:bg-trust-900/5">
-                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                Reach us
-            </a>
+    <section class="py-16">
+        <div class="mx-auto max-w-6xl px-4">
+            <div class="relative overflow-hidden rounded-3xl border border-warm-200 bg-trust-900 text-center text-white shadow-[0_28px_80px_-28px_rgb(15_61_58_/_60%)]">
+                <img
+                    src="{{ asset('images/photo-hands-heart.png') }}"
+                    width="1024"
+                    height="576"
+                    class="absolute inset-0 h-full w-full object-cover"
+                    alt=""
+                    aria-hidden="true"
+                >
+                <div class="absolute inset-0 bg-trust-900/72"></div>
+                <div class="relative z-10 px-6 py-14 md:px-10 md:py-16">
+                    <h2 class="inline-flex items-center gap-3 font-serif text-3xl font-semibold md:text-4xl">
+                        <i class="fa-solid fa-users text-trust-500" aria-hidden="true"></i>
+                        Get involved
+                    </h2>
+                    <p class="mx-auto mt-4 max-w-2xl text-white/90">
+                        Volunteer with us, become a member, or sponsor an initiative. Every contribution helps us reach more families.
+                    </p>
+                    <div class="mt-8 flex flex-wrap justify-center gap-4">
+                        <a href="{{ route('join-us') }}" class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-trust-900 transition hover:bg-warm-100">
+                            <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                            Join us
+                        </a>
+                        <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 rounded-xl border border-white/35 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20">
+                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                            Reach us
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection

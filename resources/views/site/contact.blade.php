@@ -7,6 +7,7 @@
         title="Reach us"
         subtitle="Locations across Tamil Nadu"
         icon="fa-solid fa-location-dot"
+        background-image="images/photo-holding-hands.png"
     />
 
     <div class="mx-auto max-w-3xl space-y-10 px-4 py-14 md:py-20">

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-warm-100 text-stone-800 antialiased">
+<body class="min-h-screen max-w-full overflow-x-hidden bg-warm-100 text-stone-800 antialiased">
     @php
         $mainNavLinks = [
             ['route' => 'home', 'label' => 'Home'],
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                     @endif
-                    <div class="site-footer-map overflow-hidden rounded-lg border border-trust-600/35 bg-stone-900/40 shadow-inner" aria-label="Main branch — Gudiyatham on Google Maps">
+                    <div class="site-footer-map overflow-hidden rounded-lg border border-trust-600/35 bg-stone-900/40 shadow-inner" aria-label="Administration office — Gudiyatham on Google Maps">
                         <div class="relative h-44 w-full sm:h-48">
                             <iframe
                                 src="{{ config('site.map_embed_url') }}"
@@ -202,7 +202,7 @@
                                     </span>
                                     <span class="min-w-0 pt-0.5">
                                         <span class="block text-[0.65rem] font-semibold uppercase tracking-wider text-trust-500/90">Email &amp; locations</span>
-                                        <span class="text-stone-200">Contact page</span>
+                                        <span class="text-stone-200">Contact us</span>
                                     </span>
                                 </a>
                             </li>
@@ -240,30 +240,28 @@
         </div>
     </footer>
 
-    @if (request()->routeIs('home'))
-        @php
-            $waDigits = preg_replace('/\D/', '', config('site.whatsapp'));
-        @endphp
-        <div class="site-contact-fabs" role="region" aria-label="Quick call and WhatsApp">
-            <a
-                href="tel:+91{{ $waDigits }}"
-                class="site-contact-fab site-contact-fab--phone"
-                title="Call {{ config('site.whatsapp') }}"
-            >
-                <span class="sr-only">Call {{ config('site.whatsapp') }}</span>
-                <i class="fa-solid fa-phone" aria-hidden="true"></i>
-            </a>
-            <a
-                href="https://wa.me/91{{ $waDigits }}"
-                class="site-contact-fab site-contact-fab--whatsapp"
-                rel="noopener noreferrer"
-                target="_blank"
-                title="WhatsApp {{ config('site.whatsapp') }}"
-            >
-                <span class="sr-only">Open WhatsApp chat with {{ config('site.whatsapp') }}</span>
-                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-            </a>
-        </div>
-    @endif
+    @php
+        $waDigits = preg_replace('/\D/', '', config('site.whatsapp'));
+    @endphp
+    <div class="site-contact-fabs" role="region" aria-label="Quick call and WhatsApp">
+        <a
+            href="tel:+91{{ $waDigits }}"
+            class="site-contact-fab site-contact-fab--phone"
+            title="Call {{ config('site.whatsapp') }}"
+        >
+            <span class="sr-only">Call {{ config('site.whatsapp') }}</span>
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+        </a>
+        <a
+            href="https://wa.me/91{{ $waDigits }}"
+            class="site-contact-fab site-contact-fab--whatsapp"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="WhatsApp {{ config('site.whatsapp') }}"
+        >
+            <span class="sr-only">Open WhatsApp chat with {{ config('site.whatsapp') }}</span>
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        </a>
+    </div>
 </body>
 </html>

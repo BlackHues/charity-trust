@@ -7,6 +7,7 @@
         title="Leadership team"
         subtitle="Board of trustees"
         icon="fa-solid fa-user-tie"
+        background-image="images/photo-child-house.png"
     />
 
     <div class="mx-auto max-w-6xl px-4 py-14 md:py-20">

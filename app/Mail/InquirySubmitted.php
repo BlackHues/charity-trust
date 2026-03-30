@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -22,12 +23,30 @@ class InquirySubmitted extends Mailable
 
     public function envelope(): Envelope
     {
-        $type = ucfirst((string) ($this->payload['inquiry_type'] ?? 'Enquiry'));
         $name = (string) ($this->payload['name'] ?? 'Website visitor');
+        $label = $this->inquiryTypeLabel();
+        $replyTo = [];
+
+        if (! empty($this->payload['email'])) {
+            $replyTo[] = new Address((string) $this->payload['email'], $name);
+        }
 
         return new Envelope(
-            subject: "Website {$type} form: {$name}",
+            subject: "New inquiry — {$label} · {$name}",
+            replyTo: $replyTo,
         );
+    }
+
+    private function inquiryTypeLabel(): string
+    {
+        return match ((string) ($this->payload['inquiry_type'] ?? 'enquiry')) {
+            'join' => 'Want to join',
+            'volunteer' => 'Volunteer',
+            'sponsor', 'donor' => 'Sponsor / Donor',
+            'institution' => 'Educational institution',
+            'enquiry' => 'General enquiry',
+            default => ucfirst((string) ($this->payload['inquiry_type'] ?? 'Enquiry')),
+        };
     }
 
     public function content(): Content

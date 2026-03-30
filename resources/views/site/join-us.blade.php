@@ -7,6 +7,7 @@
         title="Join us"
         subtitle="Volunteer, become a member, or sponsor our work."
         icon="fa-solid fa-user-plus"
+        background-image="images/photo-kids-unity.png"
     />
 
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-14 md:grid-cols-3 md:py-20">

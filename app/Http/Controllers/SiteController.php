@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InquiryAutoReply;
 use App\Mail\InquirySubmitted;
 use App\Models\GalleryImage;
 use App\Models\LeadershipMember;
@@ -97,6 +98,10 @@ class SiteController extends Controller
             }
 
             Mail::to($recipient)->send(new InquirySubmitted($data));
+
+            if (! empty($data['email'])) {
+                Mail::to((string) $data['email'])->send(new InquiryAutoReply($data));
+            }
         } catch (Throwable $e) {
             report($e);
 

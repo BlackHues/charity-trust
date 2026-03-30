@@ -7,6 +7,7 @@
         title="About us"
         subtitle="Maha Vidhya Charitable Trust"
         icon="fa-solid fa-book-open"
+        background-image="images/photo-hands-heart.png"
     />
 
     <article class="relative mx-auto max-w-3xl space-y-8 px-4 py-14 leading-relaxed text-stone-700 md:py-20">

@@ -7,6 +7,7 @@
         title="Our services"
         subtitle="Education, health, social welfare, rehabilitation, and the environment."
         icon="fa-solid fa-hands-holding-circle"
+        background-image="images/photo-food-service.png"
     />
 
     <div class="mx-auto max-w-3xl space-y-12 px-4 py-14 md:py-20">

@@ -10,8 +10,9 @@
     if (filled($backgroundImage)) {
         if (str_starts_with($backgroundImage, 'http://') || str_starts_with($backgroundImage, 'https://')) {
             $backgroundImageUrl = $backgroundImage;
-        } elseif (file_exists(public_path($backgroundImage))) {
-            $backgroundImageUrl = asset($backgroundImage);
+        } else {
+            // Public root is public_html/ for this app — use asset() so /images/... always resolves.
+            $backgroundImageUrl = asset(ltrim($backgroundImage, '/'));
         }
     }
     $hasBackgroundImage = $backgroundImageUrl !== null;

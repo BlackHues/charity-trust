@@ -7,6 +7,7 @@
         title="Gallery"
         subtitle="Moments from our programmes and community work."
         icon="fa-solid fa-camera-retro"
+        background-image="images/photo-hands-heart.png"
     />
 
     <div class="mx-auto max-w-6xl px-4 py-14 md:py-20">

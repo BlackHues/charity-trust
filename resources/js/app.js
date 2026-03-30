@@ -89,55 +89,24 @@ function initRevealOnScroll() {
     targets.forEach((el) => observer.observe(el));
 }
 
-/** Home-page floating call / WhatsApp: hide on scroll down, show on scroll up; grace period after load. */
-function initContactFabScrollHide() {
+/** Hide contact floater while footer is in view. */
+function initContactFabFooterHide() {
     const fab = document.querySelector('.site-contact-fabs');
-    if (!fab) {
+    const footer = document.querySelector('footer');
+
+    if (!fab || !footer) {
         return;
     }
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-    }
-
-    const GRACE_MS = 3500;
-    const TOP_ALWAYS_SHOW_PX = 56;
-    const SCROLL_DELTA = 8;
-
-    let lastY = window.scrollY;
-    let graceActive = true;
-
-    window.setTimeout(() => {
-        graceActive = false;
-    }, GRACE_MS);
-
-    window.addEventListener(
-        'scroll',
-        () => {
-            const y = window.scrollY;
-
-            if (graceActive) {
-                fab.classList.remove('site-contact-fabs--hidden');
-                lastY = y;
-                return;
-            }
-
-            if (y <= TOP_ALWAYS_SHOW_PX) {
-                fab.classList.remove('site-contact-fabs--hidden');
-                lastY = y;
-                return;
-            }
-
-            const delta = y - lastY;
-            if (delta > SCROLL_DELTA) {
-                fab.classList.add('site-contact-fabs--hidden');
-            } else if (delta < -SCROLL_DELTA) {
-                fab.classList.remove('site-contact-fabs--hidden');
-            }
-            lastY = y;
+    const observer = new IntersectionObserver(
+        (entries) => {
+            const isFooterVisible = entries.some((entry) => entry.isIntersecting);
+            fab.classList.toggle('site-contact-fabs--footer-hidden', isFooterVisible);
         },
-        { passive: true },
+        { root: null, threshold: 0.05 },
     );
+
+    observer.observe(footer);
 }
 
 function initHomeHeroCarousel() {
@@ -344,7 +313,7 @@ function initSiteUi() {
     initHomeHeroCarousel();
     initInquiryTypeForm();
     initRevealOnScroll();
-    initContactFabScrollHide();
+    initContactFabFooterHide();
     initSiteNavDrawer();
 }
 

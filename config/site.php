@@ -47,7 +47,7 @@ return [
 
     'addresses' => [
         [
-            'label' => 'Main branch — Gudiyatham',
+            'label' => 'Administration office — Gudiyatham',
             'lines' => [
                 '44/35 Melpatti Road',
                 'Kamatchiamman Pet',
@@ -93,6 +93,16 @@ return [
                 '7/143, West Street, Nadupatti',
                 'Vaiyampatti Vali, Manaparai Taluk',
                 'Tiruchirappalli District, 621315',
+            ],
+        ],
+        [
+            'label' => 'Virudunagar',
+            'lines' => [
+                '4/348 Kattanamseval Street',
+                'Thayilpatti post',
+                'Sivakasi via',
+                'Pin 626128',
+                'Virudunagar district',
             ],
         ],
     ],
