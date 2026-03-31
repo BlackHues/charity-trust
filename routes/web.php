@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryImageController;
 use App\Http\Controllers\Admin\LeadershipMemberController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\RobotsTxtController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'home'])->name('home');
@@ -16,6 +18,9 @@ Route::get('/leadership', [SiteController::class, 'leadership'])->name('leadersh
 Route::get('/gallery', [SiteController::class, 'gallery'])->name('gallery');
 Route::get('/donate', [SiteController::class, 'donate'])->name('donate');
 Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
+
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+Route::get('/robots.txt', RobotsTxtController::class)->name('robots.txt');
 
 Route::prefix('admin')->name('admin.')->group(function (): void {
     Route::middleware('guest')->group(function (): void {

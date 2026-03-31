@@ -223,21 +223,15 @@
         align-items: center;
         justify-content: center;
         border-radius: 0.5rem;
-        border: 1px solid rgb(26 92 87 / 0.22);
-        background-color: rgb(255 255 255 / 0.75);
-        padding: 0.45rem 0.5rem;
+        border: none;
+        background: transparent;
+        padding: 0.55rem 0.5rem;
         color: var(--color-trust-900);
-        box-shadow: 0 1px 2px rgb(15 61 58 / 0.06);
-        transition:
-            background-color 0.2s ease,
-            border-color 0.2s ease,
-            box-shadow 0.2s ease;
+        transition: color 0.2s ease;
     }
 
-    .site-nav-burger:hover {
-        border-color: rgb(26 92 87 / 0.38);
-        background-color: #fff;
-        box-shadow: 0 2px 8px rgb(15 61 58 / 0.08);
+    .site-nav-burger:hover .site-nav-burger-line {
+        background-color: var(--color-trust-700);
     }
 
     .site-nav-burger:focus-visible {
