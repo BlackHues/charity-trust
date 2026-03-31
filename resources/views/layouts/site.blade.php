@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen max-w-full overflow-x-hidden bg-warm-100 text-stone-800 antialiased">
+<body class="site-body-texture min-h-screen max-w-full overflow-x-hidden text-stone-800 antialiased">
     @php
         $mainNavLinks = [
             ['route' => 'home', 'label' => 'Home'],
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                     @endif
-                    <div class="site-footer-map overflow-hidden rounded-lg border border-trust-600/35 bg-stone-900/40 shadow-inner" aria-label="Administration office — Gudiyatham on Google Maps">
+                    <div class="site-footer-map overflow-hidden rounded-lg border border-trust-600/35 bg-stone-900/40 shadow-inner" aria-label="Administration office — Gudiyatham Branch on Google Maps">
                         <div class="relative h-44 w-full sm:h-48">
                             <iframe
                                 src="{{ config('site.map_embed_url') }}"

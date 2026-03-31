@@ -32,6 +32,31 @@
 }
 
 @layer components {
+    /**
+     * Full-page backdrop: soft teal washes + subtle SVG dot grid (trust palette).
+     * Stays low-contrast so body text and cards stay easy to read.
+     */
+    .site-body-texture {
+        background-color: var(--color-warm-100);
+        background-image:
+            radial-gradient(ellipse 130% 65% at 50% -12%, rgba(26, 92, 87, 0.075), transparent 52%),
+            radial-gradient(ellipse 85% 55% at 100% 100%, rgba(45, 138, 130, 0.055), transparent 58%),
+            radial-gradient(ellipse 75% 45% at 0% 55%, rgba(15, 61, 58, 0.035), transparent 55%),
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cdefs%3E%3Cpattern id='a' width='20' height='20' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='3' cy='3' r='1.2' fill='%231a5c57' fill-opacity='0.042'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3C/svg%3E");
+        background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+        background-size: auto, auto, auto, 80px 80px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .site-body-texture {
+            background-image:
+                radial-gradient(ellipse 130% 65% at 50% -12%, rgba(26, 92, 87, 0.065), transparent 52%),
+                radial-gradient(ellipse 85% 55% at 100% 100%, rgba(45, 138, 130, 0.045), transparent 58%);
+            background-repeat: no-repeat, no-repeat;
+            background-size: auto, auto;
+        }
+    }
+
     .site-header {
         padding-block: 0.875rem;
         min-height: 4.25rem;

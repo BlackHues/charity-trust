@@ -47,62 +47,62 @@ return [
 
     'addresses' => [
         [
-            'label' => 'Administration office — Gudiyatham',
+            'label' => 'Administration office — Gudiyatham Branch',
             'lines' => [
                 '44/35 Melpatti Road',
                 'Kamatchiamman Pet',
                 'Gudiyatham 632602',
-                'Vellore district',
+                'Vellore',
             ],
         ],
         [
-            'label' => 'Chennai',
+            'label' => 'Chennai Branch',
             'lines' => [
                 'Block 4, Door no 275',
                 'Mugappair West, Chennai 600037',
             ],
         ],
         [
-            'label' => 'Cuddalore district',
+            'label' => 'Cuddalore Branch',
             'lines' => [
                 'K. Govindarasu',
                 'Thethampettu, Srimushnam post',
-                'Cuddalore district, 608703',
+                'Cuddalore, 608703',
             ],
         ],
         [
-            'label' => 'Dindigul',
+            'label' => 'Dindigul Branch',
             'lines' => [
                 'R. Manikandan',
                 'Nayakkamar Street, 14th Ward',
-                'Ayyampalayam, Dindigul (dt) 624204',
+                'Ayyampalayam, Dindigul 624204',
                 'Mob: 8838451331',
             ],
         ],
         [
-            'label' => 'Coimbatore',
+            'label' => 'Coimbatore Branch',
             'lines' => [
                 'No. 7 G.P. Garden, Kamadenu Nagar',
                 'Avalli, Coimbatore 641041',
             ],
         ],
         [
-            'label' => 'Tiruchirappalli',
+            'label' => 'Tiruchirappalli Branch',
             'lines' => [
                 'Magalir Thayyal Payirchi Maiyam',
                 '7/143, West Street, Nadupatti',
                 'Vaiyampatti Vali, Manaparai Taluk',
-                'Tiruchirappalli District, 621315',
+                'Tiruchirappalli, 621315',
             ],
         ],
         [
-            'label' => 'Virudunagar',
+            'label' => 'Sivakasi Branch',
             'lines' => [
                 '4/348 Kattanamseval Street',
                 'Thayilpatti post',
                 'Sivakasi via',
                 'Pin 626128',
-                'Virudunagar district',
+                'Virudunagar',
             ],
         ],
     ],

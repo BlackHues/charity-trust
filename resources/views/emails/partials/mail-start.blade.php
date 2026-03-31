@@ -2,6 +2,8 @@
     $pageTitle = $pageTitle ?? config('app.name');
     $heading = $heading ?? '';
     $subheading = $subheading ?? null;
+    /** Inline embed so Gmail shows the logo without loading a remote URL (privacy / CDN / path issues). */
+    $mailLogoSrc = $message->embed(public_path('images/logo.png'));
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +21,7 @@
                     <tr>
                         <td style="background:linear-gradient(135deg,#0f3d3a 0%,#1a5c57 42%,#2d8a82 100%);padding:28px 24px 26px;text-align:center;">
                             <img
-                                src="{{ asset('images/logo.png') }}"
+                                src="{{ $mailLogoSrc }}"
                                 alt="{{ config('app.name') }}"
                                 width="200"
                                 style="max-width:200px;width:100%;height:auto;display:block;margin:0 auto 18px;border:0;outline:none;"
