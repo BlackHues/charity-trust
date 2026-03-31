@@ -36,12 +36,12 @@ return [
     'phone_secondary' => env('SITE_PHONE_SECONDARY', '8838451331'),
     'inquiry_recipient' => env('SITE_INQUIRY_RECIPIENT', env('ADMIN_EMAIL', env('MAIL_FROM_ADDRESS', ''))),
 
-    /** Full profile URLs — leave empty to hide an icon in the footer. */
+    /** Full profile URLs — env overrides; defaults shown in footer “Follow us”. */
     'social' => [
-        'facebook' => env('SITE_SOCIAL_FACEBOOK'),
-        'instagram' => env('SITE_SOCIAL_INSTAGRAM'),
-        'youtube' => env('SITE_SOCIAL_YOUTUBE'),
-        'x' => env('SITE_SOCIAL_X'),
+        'facebook' => env('SITE_SOCIAL_FACEBOOK', 'https://www.facebook.com/mahavidhyacharitabletrust'),
+        'instagram' => env('SITE_SOCIAL_INSTAGRAM', 'https://www.instagram.com/charitabletrustmahavidhya/'),
+        'youtube' => env('SITE_SOCIAL_YOUTUBE', 'https://www.youtube.com/@MahavidhyaCharitableTrust'),
+        'x' => env('SITE_SOCIAL_X', 'https://x.com/mahavidhyatrust'),
         'linkedin' => env('SITE_SOCIAL_LINKEDIN'),
     ],
 

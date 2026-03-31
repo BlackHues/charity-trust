@@ -10,6 +10,8 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
     --font-serif: 'Fraunces', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
     --font-nav: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    /* Main menu (desktop + drawer): serif, richer than Montserrat */
+    --font-nav-menu: 'Fraunces', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
     --color-trust-900: #0f3d3a;
     --color-trust-700: #1a5c57;
     --color-trust-500: #2d8a82;
@@ -22,6 +24,7 @@
     html {
         overflow-x: hidden;
         overscroll-behavior-x: none;
+        scroll-padding-top: var(--site-fixed-chrome-height, 6.5rem);
     }
 
     body {
@@ -32,6 +35,32 @@
 }
 
 @layer components {
+    /**
+     * Height of top phone bar + main header — used for fixed chrome, main offset, drawer, anchors.
+     */
+    :root {
+        --site-fixed-chrome-height: 6.5rem;
+    }
+
+    @media (min-width: 768px) {
+        :root {
+            --site-fixed-chrome-height: 7rem;
+        }
+    }
+
+    .site-fixed-chrome {
+        position: fixed;
+        inset-inline: 0;
+        top: 0;
+        z-index: 50;
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .site-main {
+        padding-top: var(--site-fixed-chrome-height);
+    }
+
     /**
      * Full-page backdrop: soft teal washes + subtle SVG dot grid (trust palette).
      * Stays low-contrast so body text and cards stay easy to read.
@@ -57,49 +86,64 @@
         }
     }
 
+    /* Top phone strip — force white text (global link styles must not win). */
+    .site-top-phone-bar a.site-top-phone-bar__link,
+    .site-top-phone-bar a.site-top-phone-bar__link:link,
+    .site-top-phone-bar a.site-top-phone-bar__link:visited,
+    .site-top-phone-bar a.site-top-phone-bar__link:hover,
+    .site-top-phone-bar a.site-top-phone-bar__link:active,
+    .site-top-phone-bar a.site-top-phone-bar__link span {
+        color: #fff !important;
+    }
+
+    .site-top-phone-bar a.site-top-phone-bar__link i {
+        color: #fff !important;
+    }
+
     .site-header {
-        padding-block: 0.875rem;
-        min-height: 4.25rem;
+        padding-block: 0.5rem;
+        min-height: 3.375rem;
     }
 
     @media (min-width: 768px) {
         .site-header {
-            padding-block: 1.125rem;
-            min-height: 4.75rem;
+            padding-block: 0.75rem;
+            min-height: 3.75rem;
         }
     }
 
-    /* Navbar logo — sized to match taller header bar (hero section unchanged) */
+    /* Navbar logo — compact to match slimmer header */
     .site-header-logo {
         width: auto;
         object-fit: contain;
         object-position: left center;
-        height: 2.875rem;
-        max-width: min(100%, 200px);
+        height: 2.375rem;
+        max-width: min(100%, 176px);
     }
 
     @media (min-width: 768px) {
         .site-header-logo {
-            height: 4.25rem;
-            max-width: 300px;
+            height: 3.25rem;
+            max-width: 260px;
         }
     }
 
     .site-nav-font {
-        font-family: var(--font-nav);
+        font-family: var(--font-nav-menu);
     }
 
-    /* Primary nav: Montserrat, all caps — animated bottom accent */
+    /* Primary nav: Fraunces, semi-bold — sentence case, animated accent */
     .site-nav-link {
         position: relative;
-        font-family: var(--font-nav);
+        font-family: var(--font-nav-menu);
         border-radius: 0.5rem;
-        padding: 0.75rem 1rem;
+        padding: 0.5rem 0.65rem;
         font-size: 0.8125rem;
-        font-weight: 600;
-        line-height: 1.3;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
+        font-weight: 700;
+        line-height: 1.35;
+        letter-spacing: 0.03em;
+        font-optical-sizing: auto;
+        text-transform: none;
         transition: color 0.2s ease;
     }
 
@@ -144,17 +188,24 @@
     }
 
     @media (min-width: 768px) {
+        .site-nav-link::after {
+            bottom: 0.18rem;
+            width: calc(100% - 0.35rem);
+            height: 2px;
+        }
+    }
+
+    @media (min-width: 1536px) {
         .site-nav-link {
-            border-radius: 0.375rem;
-            padding: 0.5rem 0.6rem;
-            font-size: 0.75rem;
-            letter-spacing: 0.065em;
+            padding: 0.5rem 0.85rem;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.035em;
         }
 
         .site-nav-link::after {
-            bottom: 0.2rem;
-            width: calc(100% - 0.35rem);
-            height: 2px;
+            bottom: 0.22rem;
+            width: calc(100% - 0.5rem);
         }
     }
 
@@ -171,10 +222,10 @@
         flex-shrink: 0;
         align-items: center;
         justify-content: center;
-        border-radius: 0.625rem;
+        border-radius: 0.5rem;
         border: 1px solid rgb(26 92 87 / 0.22);
         background-color: rgb(255 255 255 / 0.75);
-        padding: 0.65rem 0.7rem;
+        padding: 0.45rem 0.5rem;
         color: var(--color-trust-900);
         box-shadow: 0 1px 2px rgb(15 61 58 / 0.06);
         transition:
@@ -198,8 +249,8 @@
 
     .site-nav-burger-box {
         display: flex;
-        height: 0.875rem;
-        width: 1.375rem;
+        height: 0.75rem;
+        width: 1.2rem;
         flex-direction: column;
         justify-content: space-between;
     }
@@ -216,7 +267,7 @@
     }
 
     body.site-nav-open .site-nav-burger-line:nth-child(1) {
-        transform: translateY(6px) rotate(45deg);
+        transform: translateY(5px) rotate(45deg);
     }
 
     body.site-nav-open .site-nav-burger-line:nth-child(2) {
@@ -225,12 +276,13 @@
     }
 
     body.site-nav-open .site-nav-burger-line:nth-child(3) {
-        transform: translateY(-6px) rotate(-45deg);
+        transform: translateY(-5px) rotate(-45deg);
     }
 
+    /* Below top phone bar + compact header */
     .site-nav-backdrop {
         position: fixed;
-        top: 4.25rem;
+        top: var(--site-fixed-chrome-height);
         right: 0;
         bottom: 0;
         left: 0;
@@ -245,12 +297,6 @@
         backdrop-filter: blur(3px);
     }
 
-    @media (min-width: 768px) {
-        .site-nav-backdrop {
-            top: 4.75rem;
-        }
-    }
-
     body.site-nav-open .site-nav-backdrop {
         opacity: 1;
         visibility: visible;
@@ -259,11 +305,11 @@
 
     .site-nav-drawer {
         position: fixed;
-        top: 4.25rem;
+        top: var(--site-fixed-chrome-height);
         right: 0;
         z-index: 95;
         display: flex;
-        height: calc(100dvh - 4.25rem);
+        height: calc(100dvh - var(--site-fixed-chrome-height));
         max-width: min(100%, 20rem);
         width: min(100%, 20rem);
         transform: translate3d(100%, 0, 0);
@@ -271,13 +317,6 @@
         will-change: transform;
         box-shadow: -12px 0 40px rgb(15 61 58 / 0.18);
         contain: layout style paint;
-    }
-
-    @media (min-width: 768px) {
-        .site-nav-drawer {
-            top: 4.75rem;
-            height: calc(100dvh - 4.75rem);
-        }
     }
 
     body.site-nav-open .site-nav-drawer {
@@ -350,13 +389,14 @@
     }
 
     .site-nav-drawer-link {
-        font-family: var(--font-nav);
-        border-radius: 0.625rem;
-        padding: 0.85rem 1rem;
-        font-size: 0.8125rem;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
+        font-family: var(--font-nav-menu);
+        border-radius: 0.5rem;
+        padding: 0.7rem 0.95rem;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        font-optical-sizing: auto;
+        text-transform: none;
         color: rgb(87 83 78);
         transition:
             background-color 0.15s ease,
@@ -497,7 +537,8 @@
     }
 
     .home-hero-carousel {
-        min-height: calc(100svh - 4rem - 4rem);
+        /* ~100svh − 8rem total offset (matches pre-fixed layout intent) */
+        min-height: calc(100svh - var(--site-fixed-chrome-height) - 1.5rem);
     }
 
     .home-hero-slide {
@@ -551,7 +592,8 @@
 
     @media (min-width: 768px) {
         .home-hero-carousel {
-            min-height: calc(100svh - 4.25rem - 4rem);
+            /* Viewport below fixed phone bar + header + breathing room */
+            min-height: calc(100svh - var(--site-fixed-chrome-height) - 3.25rem);
         }
     }
 

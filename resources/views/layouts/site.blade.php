@@ -24,13 +24,36 @@
             ['route' => 'donate', 'label' => 'Donate'],
             ['route' => 'contact', 'label' => 'Contact'],
         ];
+        $topBarWaDigits = preg_replace('/\D/', '', config('site.whatsapp'));
+        $topBarSecDigits = preg_replace('/\D/', '', (string) config('site.phone_secondary'));
     @endphp
-    <header id="site-header" class="site-header sticky top-0 z-50 border-b border-warm-200/80 bg-warm-100/95 backdrop-blur-sm">
+    <div class="site-fixed-chrome">
+        <div class="site-top-phone-bar border-b border-trust-800/90 bg-trust-900 text-white" role="region" aria-label="Phone numbers">
+            <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-3 gap-y-1 px-3 py-2 sm:gap-x-6 sm:px-4 sm:py-2.5 md:justify-end md:gap-x-8 md:py-3">
+                <a
+                    href="tel:+91{{ $topBarWaDigits }}"
+                    class="site-top-phone-bar__link inline-flex min-h-8 items-center gap-1.5 rounded-md px-0.5 text-[0.6875rem] font-semibold tabular-nums tracking-tight !text-white transition hover:!text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-trust-900 sm:min-h-9 sm:text-sm md:text-base"
+                >
+                    <i class="fa-solid fa-phone text-[0.6rem] !text-white sm:text-xs" aria-hidden="true"></i>
+                    <span class="!text-white">+91 {{ config('site.whatsapp') }}</span>
+                </a>
+                @if ($topBarSecDigits !== '')
+                    <a
+                        href="tel:+91{{ $topBarSecDigits }}"
+                        class="site-top-phone-bar__link inline-flex min-h-8 items-center gap-1.5 rounded-md px-0.5 text-[0.6875rem] font-semibold tabular-nums tracking-tight !text-white transition hover:!text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-trust-900 sm:min-h-9 sm:text-sm md:text-base"
+                    >
+                        <i class="fa-solid fa-headset text-[0.6rem] !text-white sm:text-xs" aria-hidden="true"></i>
+                        <span class="!text-white">+91 {{ config('site.phone_secondary') }}</span>
+                    </a>
+                @endif
+            </div>
+        </div>
+        <header id="site-header" class="site-header border-b border-warm-200/80 bg-warm-100/95 backdrop-blur-sm">
         <div class="relative z-[100] mx-auto flex max-w-6xl items-center justify-between gap-x-4 px-4 py-0 md:gap-x-8">
             <a href="{{ route('home') }}" class="flex min-w-0 shrink-0 items-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-trust-700 focus-visible:ring-offset-2">
                 <img src="{{ asset('images/logo.png') }}"
-                     width="300"
-                     height="132"
+                     width="260"
+                     height="114"
                      class="site-header-logo"
                      alt="Maha Vidhya Charitable Trust — goddess Saraswati on a lotus flanked by elephants, Est. 2017">
                 <span class="sr-only">{{ config('app.name') }}</span>
@@ -80,7 +103,8 @@
                 </nav>
             </div>
         </aside>
-    </header>
+        </header>
+    </div>
 
     <main class="site-main">
         @yield('content')
