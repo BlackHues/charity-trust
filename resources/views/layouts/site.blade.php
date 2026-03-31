@@ -2,6 +2,16 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+    @if ($ga4Id = trim((string) config('site.ga4_measurement_id')))
+        <!-- Google tag (gtag.js) — GA4 -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ urlencode($ga4Id) }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', @json($ga4Id));
+        </script>
+    @endif
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Maha Vidhya Charitable Trust — education, healthcare, and social welfare for underprivileged communities in Tamil Nadu.">
     <title>@yield('title', config('app.name'))</title>

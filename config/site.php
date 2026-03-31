@@ -36,6 +36,11 @@ return [
     'phone_secondary' => env('SITE_PHONE_SECONDARY', '8838451331'),
     'inquiry_recipient' => env('SITE_INQUIRY_RECIPIENT', env('ADMIN_EMAIL', env('MAIL_FROM_ADDRESS', ''))),
 
+    /**
+     * Google Analytics 4 — gtag.js (loads from googletagmanager.com). Empty SITE_GA4_MEASUREMENT_ID disables the snippet.
+     */
+    'ga4_measurement_id' => env('SITE_GA4_MEASUREMENT_ID', 'G-L2BDJFTNY4'),
+
     /** Full profile URLs — env overrides; defaults shown in footer “Follow us”. */
     'social' => [
         'facebook' => env('SITE_SOCIAL_FACEBOOK', 'https://www.facebook.com/mahavidhyacharitabletrust'),
