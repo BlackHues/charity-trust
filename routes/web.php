@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\GalleryImageController;
+use App\Http\Controllers\Admin\GalleryAlbumController;
+use App\Http\Controllers\Admin\BranchLocationController;
 use App\Http\Controllers\Admin\LeadershipMemberController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RobotsTxtController;
@@ -32,12 +33,12 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
         Route::get('/', DashboardController::class)->name('dashboard');
 
-        Route::get('gallery', [GalleryImageController::class, 'index'])->name('gallery.index');
-        Route::get('gallery/create', [GalleryImageController::class, 'create'])->name('gallery.create');
-        Route::post('gallery', [GalleryImageController::class, 'store'])->name('gallery.store');
-        Route::get('gallery/{gallery_image}/edit', [GalleryImageController::class, 'edit'])->name('gallery.edit');
-        Route::put('gallery/{gallery_image}', [GalleryImageController::class, 'update'])->name('gallery.update');
-        Route::delete('gallery/{gallery_image}', [GalleryImageController::class, 'destroy'])->name('gallery.destroy');
+        Route::get('gallery', [GalleryAlbumController::class, 'index'])->name('gallery.index');
+        Route::get('gallery/create', [GalleryAlbumController::class, 'create'])->name('gallery.create');
+        Route::post('gallery', [GalleryAlbumController::class, 'store'])->name('gallery.store');
+        Route::get('gallery/{gallery_album}/edit', [GalleryAlbumController::class, 'edit'])->name('gallery.edit');
+        Route::put('gallery/{gallery_album}', [GalleryAlbumController::class, 'update'])->name('gallery.update');
+        Route::delete('gallery/{gallery_album}', [GalleryAlbumController::class, 'destroy'])->name('gallery.destroy');
 
         Route::get('leadership', [LeadershipMemberController::class, 'index'])->name('leadership.index');
         Route::get('leadership/create', [LeadershipMemberController::class, 'create'])->name('leadership.create');
@@ -45,5 +46,7 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
         Route::get('leadership/{leadership_member}/edit', [LeadershipMemberController::class, 'edit'])->name('leadership.edit');
         Route::put('leadership/{leadership_member}', [LeadershipMemberController::class, 'update'])->name('leadership.update');
         Route::delete('leadership/{leadership_member}', [LeadershipMemberController::class, 'destroy'])->name('leadership.destroy');
+
+        Route::resource('branches', BranchLocationController::class)->except(['show']);
     });
 });

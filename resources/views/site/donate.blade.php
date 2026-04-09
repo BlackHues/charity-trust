@@ -19,9 +19,15 @@
             <p class="mt-3 text-stone-600">Scan the QR code with any UPI app (Google Pay, PhonePe, BHIM, etc.).</p>
             @php
                 $qrFromEnv = config('site.donation_qr_url');
-                $qrAsset = asset('images/donation-upi-qr.png');
-                $qrLocalPath = public_path('images/donation-upi-qr.png');
-                $qrSrc = $qrFromEnv ?: (file_exists($qrLocalPath) ? $qrAsset : null);
+                $qrPreferredAsset = asset('images/maha-vidhya-upi-qr.jpeg');
+                $qrPreferredLocal = public_path('images/maha-vidhya-upi-qr.jpeg');
+                $qrLegacyAsset = asset('images/donation-upi-qr.jpeg');
+                $qrLegacyLocal = public_path('images/donation-upi-qr.jpeg');
+
+                $qrSrc = $qrFromEnv
+                    ?: (file_exists($qrPreferredLocal)
+                        ? $qrPreferredAsset
+                        : (file_exists($qrLegacyLocal) ? $qrLegacyAsset : null));
             @endphp
             <div class="mx-auto mt-8 max-w-md">
                 @if ($qrSrc)

@@ -240,6 +240,72 @@ function initInquiryTypeForm() {
     });
 }
 
+function initGalleryLightbox() {
+    const triggers = Array.from(document.querySelectorAll('[data-gallery-trigger]'));
+    const lightbox = document.querySelector('[data-gallery-lightbox]');
+    const image = lightbox?.querySelector('[data-gallery-image]');
+    const closeBtn = lightbox?.querySelector('[data-gallery-close]');
+    const prevBtn = lightbox?.querySelector('[data-gallery-prev]');
+    const nextBtn = lightbox?.querySelector('[data-gallery-next]');
+
+    if (!triggers.length || !lightbox || !image || !closeBtn || !prevBtn || !nextBtn) {
+        return;
+    }
+
+    let activeIndex = 0;
+
+    const setActive = (index) => {
+        activeIndex = (index + triggers.length) % triggers.length;
+        const trigger = triggers[activeIndex];
+        const src = trigger.getAttribute('data-gallery-src') ?? '';
+        const alt = trigger.getAttribute('data-gallery-alt') ?? 'Gallery image';
+        image.setAttribute('src', src);
+        image.setAttribute('alt', alt);
+    };
+
+    const open = (index) => {
+        setActive(index);
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        image.setAttribute('src', '');
+        document.body.style.overflow = '';
+    };
+
+    triggers.forEach((trigger, index) => {
+        trigger.addEventListener('click', () => open(index));
+    });
+
+    prevBtn.addEventListener('click', () => setActive(activeIndex - 1));
+    nextBtn.addEventListener('click', () => setActive(activeIndex + 1));
+    closeBtn.addEventListener('click', close);
+
+    lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) {
+            close();
+        }
+    });
+
+    window.addEventListener('keydown', (event) => {
+        if (!lightbox.classList.contains('is-open')) {
+            return;
+        }
+
+        if (event.key === 'Escape') {
+            close();
+        } else if (event.key === 'ArrowLeft') {
+            setActive(activeIndex - 1);
+        } else if (event.key === 'ArrowRight') {
+            setActive(activeIndex + 1);
+        }
+    });
+}
+
 /** Mobile / tablet nav: hamburger, slide-in drawer, body scroll lock (matches CSS max-width 1535px). */
 function initSiteNavDrawer() {
     const toggle = document.querySelector('[data-site-nav-toggle]');
@@ -314,6 +380,7 @@ function initSiteUi() {
     initInquiryTypeForm();
     initRevealOnScroll();
     initContactFabFooterHide();
+    initGalleryLightbox();
     initSiteNavDrawer();
 }
 

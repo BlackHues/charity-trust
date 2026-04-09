@@ -122,7 +122,25 @@
 
     <footer class="mt-16 border-t border-warm-200 bg-trust-900 text-stone-200">
         @php
-            $mainAddress = config('site.addresses')[0] ?? null;
+            $mainAddress = null;
+            try {
+                $mainBranch = \App\Models\BranchLocation::query()
+                    ->orderByDesc('is_main')
+                    ->orderBy('sort_order')
+                    ->orderBy('id')
+                    ->first();
+                if ($mainBranch) {
+                    $mainAddress = [
+                        'label' => $mainBranch->label,
+                        'lines' => $mainBranch->lines(),
+                    ];
+                }
+            } catch (\Throwable $e) {
+                $mainAddress = config('site.addresses')[0] ?? null;
+            }
+            if (! $mainAddress) {
+                $mainAddress = config('site.addresses')[0] ?? null;
+            }
             $waDigits = preg_replace('/\D/', '', config('site.whatsapp'));
             $secDigits = preg_replace('/\D/', '', (string) config('site.phone_secondary'));
             $footerSocial = collect(config('site.social', []))

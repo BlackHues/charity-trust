@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\InquiryAutoReply;
 use App\Mail\InquirySubmitted;
-use App\Models\GalleryImage;
+use App\Models\GalleryAlbum;
 use App\Models\LeadershipMember;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -46,9 +46,13 @@ class SiteController extends Controller
 
     public function gallery(): View
     {
-        $images = GalleryImage::query()->orderBy('sort_order')->orderBy('id')->get();
+        $albums = GalleryAlbum::query()
+            ->with(['images' => fn ($q) => $q->orderBy('sort_order')->orderBy('id')])
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
 
-        return view('site.gallery', compact('images'));
+        return view('site.gallery', compact('albums'));
     }
 
     public function donate(): View
