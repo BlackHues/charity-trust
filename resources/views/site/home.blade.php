@@ -18,7 +18,7 @@
                 </div>
                 <div class="mx-auto flex w-full max-w-3xl flex-col items-center text-center">
                     <h1 class="home-hero-slide--intro-headline text-balance font-serif text-3xl font-semibold leading-tight md:text-4xl lg:text-[2.5rem]">
-                        Hope, education, and care for every life we touch
+                        Hope, Education and Care for every life we touch
                     </h1>
                     <p class="home-hero-slide--intro-lede mt-4 text-sm leading-relaxed text-white/90 md:mt-5 md:text-base">
                         Maha Vidhya Charitable Trust works to enrich the lives of underprivileged people through education, mentorship, and access to quality healthcare.
@@ -51,7 +51,7 @@
             <div class="home-hero-banner-content relative z-10 mx-auto flex min-h-[calc(100svh-4rem-4rem)] w-full max-w-7xl flex-col justify-center px-4 py-8 md:min-h-[calc(100svh-4.25rem-4rem)] md:py-10">
                 <div class="home-hero-banner-chunk max-w-3xl">
                     <p class="font-serif text-2xl font-semibold leading-tight text-white drop-shadow-sm md:text-4xl md:leading-tight">
-                        Education is the light that turns poverty into possibility - every child deserves that chance.
+                        Education is the light that turns poverty into possibility, every child deserves that chance.
                     </p>
                 </div>
                 <div class="home-hero-banner-chunk home-hero-banner-actions mt-6 flex flex-wrap gap-3 md:mt-8">
